@@ -14,6 +14,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")], // DaisyUIプラグインを追加
 };
 export default config;
