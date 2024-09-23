@@ -33,7 +33,7 @@ const TimerWithProgress: React.FC = () => {
 
   useEffect(() => {
     console.log("progress:", progressValue);
-  }, [timeLeft]); // timeLeftが変更された時のみログ出力
+  }, [timeLeft, progressValue]); // timeLeftが変更された時のみログ出力,progressValueを追加
 
   return (
     <div className="flex flex-col items-center">
