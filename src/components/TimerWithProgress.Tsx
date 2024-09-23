@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Chart } from "chart.js"; // Chart.jsをインポート
 
 const TimerWithProgress: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(1500); //25分（1500秒）
