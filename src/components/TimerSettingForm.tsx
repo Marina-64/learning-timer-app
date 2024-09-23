@@ -1,4 +1,3 @@
-import { time } from "console";
 import { useEffect, useState } from "react";
 
 const TimerSettingForm: React.FC = () => {
