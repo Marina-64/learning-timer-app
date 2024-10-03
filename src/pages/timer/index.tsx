@@ -1,43 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import TimerSettingForm from "@/components/TimerSettingForm";
+import useTimer from "@/hooks/useTimer";
 
 const Home: React.FC = () => {
   const router = useRouter();
-  const [timerStarted, setTimerStarted] = useState(false);
-  const [currentTimer, setCurrentTimer] = useState("work");
-  const [time, setTime] = useState(25 * 60); // 25分
+  const initialWorkTime: number = 25 * 60; // 25分
+  const breakTime: number = 5 * 60; // 5分
+  const { time, setTime } = useTimer(initialWorkTime, breakTime); // 2つの引数を渡す
 
-  const startTimer = () => {
-    setTimerStarted(true);
+  const handleStart = () => {
     router.push("/timer/measuring");
   };
 
-  const handleTimerEnd = () => {
-    if (currentTimer === "work") {
-      setCurrentTimer("break");
-      setTime(5 * 60); // 5分
-    } else {
-      setCurrentTimer("work");
-      setTime(25 * 60); // 25分
-    }
+  // 時間が変更されたときに呼び出される関数
+  const handleTimeChange = (newTime: number) => {
+    setTime(newTime);
   };
 
   return (
     <div>
-      {timerStarted ? (
-        <div>
-          <h1>Recording</h1>
-          <TimerSettingForm time={time} />
-          <p>next {currentTimer === "work" ? "Break 5:00" : "Doing 25:00"}</p>
-          <button onClick={() => setTimerStarted(false)}>停止</button>
-        </div>
-      ) : (
-        <div>
-          <TimerSettingForm time={time} />
-          <button onClick={startTimer}>スタート</button>
-        </div>
-      )}
+      <TimerSettingForm
+        time={time}
+        nextTime={breakTime}
+        onChange={handleTimeChange}
+      />
+      <button onClick={handleStart}>スタート</button>
     </div>
   );
 };
