@@ -1,11 +1,14 @@
 import React from "react";
 
-const TimerSettingForm: React.FC<{ time: number; nextTime: number }> = ({
-  time,
-  nextTime,
-}) => {
+interface Props {
+  time: number;
+  onChange: (newTime: number) => void;
+  nextTime: number;
+}
+
+const TimerSettingForm: React.FC<Props> = ({ time, nextTime }) => {
   const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+  const seconds = 0;
   const nextMinutes = Math.floor(nextTime / 60);
   const nextSeconds = nextTime % 60;
 
