@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
 
 const Home: React.FC = () => {
   const router = useRouter();
+  const [title, setTitle] = useState(""); //タイトルの初期値は空
   const initialWorkTime: number = 25 * 60; // 25分
   const breakTime: number = 5 * 60; // 5分
   const { time, setTime } = useTimer(initialWorkTime, breakTime); // 2つの引数を渡す
 
   const handleStart = () => {
     router.push("/timer/measuring");
+  };
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
   };
 
   // 時間が変更されたときに呼び出される関数
@@ -25,6 +30,13 @@ const Home: React.FC = () => {
 
   return (
     <div className="text-center">
+      <input
+        type="text"
+        placeholder="Enter a title"
+        value={title}
+        onChange={handleTitleChange}
+        className="input input-bordered mx-auto mt-4 w-1/2 max-w-xs rounded-3xl border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500"
+      />
       <div>
         <h2 className="font-semibold text-4xl mt-6 text-center">
           {minutes}:{seconds.toString().padStart(2, "0")}
