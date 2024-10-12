@@ -1,6 +1,6 @@
 // components/Timer.tsx
 import { useState } from "react";
-import { supabase } from "../utils/supabase/server";
+import { supabase } from "../utils/supabase";
 
 const Timer = () => {
   const [startTime, setStartTime] = useState<Date | null>(null);
