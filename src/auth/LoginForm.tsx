@@ -63,10 +63,10 @@ const LoginForm: React.FC = () => {
         <div className="">
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="Value">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
-                type="text"
+                type="email"
                 id="email"
                 placeholder="Email"
                 value={email}
@@ -74,7 +74,7 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <div className="mt-6">
-              <label htmlFor="Value">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
                 type="password"
