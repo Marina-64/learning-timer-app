@@ -1,6 +1,6 @@
 import { getAllTimers } from "@/utils/supabaseFunction";
 import React, { useEffect, useState } from "react";
-import { ThemeProvider } from "react-bootstrap";
+import "daisyui/dist/full.css";
 
 // supabaseを挿入
 const Home: React.FC = () => {
