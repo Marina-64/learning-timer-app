@@ -10,7 +10,7 @@ const ResetPasswordForm = () => {
   };
 
   return (
-    <div className="mt-4 max-w-lg">
+    <div className="mt-4 flex justify-center items-center">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="email">Email</label>
@@ -27,7 +27,10 @@ const ResetPasswordForm = () => {
           <button type="submit" className="btn btn-ghost">
             Cancel
           </button>
-          <button type="submit" className="btn btn-neutral ml-4">
+          <button
+            type="submit"
+            className="btn btn-neutral ml-4 hover:bg-gray-600"
+          >
             Reset Password
           </button>
         </div>

@@ -59,76 +59,74 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-      <div className="mx-6 flex justify-center items-center border border-gray-500 rounded-lg p-6">
-        <div className="">
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
-                type="email"
-                id="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+      <div className="mt-4 flex justify-center items-center">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
+              type="email"
+              id="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="mt-6">
+            <label htmlFor="password">Password</label>
+            <input
+              className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button className="btn btn-neutral mt-6 w-full hover:bg-gray-600">
+            Sign in
+          </button>
+          <div className="mt-6 flex">
+            <a
+              onClick={forgetPassword}
+              className="underline underline-offset-4 hover:text-blue-500 transition-colors"
+            >
+              Forgot password?
+            </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="w-5 h-5 translate-y-[2px]" // SVGの高さと位置を調整
+            >
+              <path
+                fillRule="evenodd"
+                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
               />
-            </div>
-            <div className="mt-6">
-              <label htmlFor="password">Password</label>
-              <input
-                className="mt-2 w-full border border-neutral-300 rounded-lg p-2"
-                type="password"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+            </svg>
+          </div>
+          <div className="mt-6 flex">
+            <a
+              onClick={signUp}
+              className="underline underline-offset-4 hover:text-blue-500 transition-colors"
+            >
+              Sign up
+            </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="w-5 h-5 translate-y-[2px]" // SVGの高さと位置を調整
+            >
+              <path
+                fillRule="evenodd"
+                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
               />
-            </div>
-            <button className="btn btn-active btn-neutral mt-6 w-full hover:bg-gray-600 text-white py-2 px-4 rounded-lg">
-              Sign in
-            </button>
-            <div className="mt-6 flex">
-              <a
-                onClick={forgetPassword}
-                className="underline underline-offset-4 hover:text-blue-500 transition-colors"
-              >
-                Forgot password?
-              </a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="w-5 h-5 translate-y-[2px]" // SVGの高さと位置を調整
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <div className="mt-6 flex">
-              <a
-                onClick={signUp}
-                className="underline underline-offset-4 hover:text-blue-500 transition-colors"
-              >
-                Sign up
-              </a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="w-5 h-5 translate-y-[2px]" // SVGの高さと位置を調整
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </form>
-        </div>
+            </svg>
+          </div>
+        </form>
       </div>
       {errorMessage && (
         <div className="mx-6 mt-6 flex gap-2 bg-gray-100 p-4 rounded-lg">
