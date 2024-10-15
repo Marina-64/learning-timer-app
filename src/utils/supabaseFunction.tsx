@@ -1,4 +1,4 @@
-import { supabase } from "../utils/supabase";
+import { supabase } from "./supabase";
 
 // 全てのタイマーを取得
 export const getAllTimers = async () => {

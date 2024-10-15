@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
+import BtnNav from "@/components/BtnNav";
+import Image from "next/image";
 
 const Records: React.FC = () => {
   const [studyDuration, setStudyDuration] = useState<number | null>(null);
@@ -27,27 +29,44 @@ const Records: React.FC = () => {
   // 秒を「時間:分」の形式に変換する関数
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
 
-    if (minutes < 60) {
-      return `${minutes}分${remainingSeconds}秒`;
-    } else {
-      const hours = Math.floor(minutes / 60);
-      const remainingMinutes = minutes % 60;
-      return `${hours}時間${remainingMinutes}分`;
-    }
+    // 2桁表示にフォーマット
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(remainingMinutes).padStart(2, "0");
+
+    return `${formattedHours}:${formattedMinutes}`;
   };
 
   return (
     <div className="text-center">
-      <h1 className="text-2xl font-semibold">最新の勉強記録</h1>
-      {studyDuration !== null ? (
-        <h2 className="font-semibold text-4xl mt-6">
-          {formatDuration(studyDuration)}
-        </h2>
-      ) : (
-        <p>記録がありません。</p>
-      )}
+      <div className="bg-[#4ADE80] text-white rounded-lg p-3 max-w-xs mx-auto mt-4">
+        <h1 className="text-1xl font-semibold">励ましメッセージ</h1>
+      </div>
+
+      <div className="flex justify-center items-center mt-6">
+        <p className="mr-4">total</p> {/* 右にマージンを追加 */}
+        {studyDuration !== null ? (
+          <h2 className="font-semibold text-4xl">
+            {formatDuration(studyDuration)}
+          </h2>
+        ) : (
+          <p>記録がありません。</p>
+        )}
+      </div>
+
+      <div>
+        <Image
+          src="/appleTree.jpg"
+          alt="appleTree.jpg"
+          width={360}
+          height={520}
+          className="inline-block"
+        />
+      </div>
+
+      <BtnNav />
     </div>
   );
 };
