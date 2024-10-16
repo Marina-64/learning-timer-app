@@ -18,8 +18,8 @@ const BtnNav = () => {
     return(
       <div className="btm-nav">
         <button
-          onClick={() => handleNavigation("/")}
-          className={activePath === "/" ? "active" : ""}>
+          onClick={() => handleNavigation("/home")}
+          className={activePath === "/home" ? "active" : ""}>
           <HomeIcon className="h-5 w-5" />
         </button>
         <button
