@@ -1,8 +1,10 @@
+@import "daisyui/dist/full.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "daisyui/dist/full.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 
 :root {
   --background: #ffffff;
@@ -26,4 +28,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  @media screen and (min-width: 768px) {
+    .custom-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }  
 }

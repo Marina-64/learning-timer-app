@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
+import Image from "next/image";
 
 const Measuring: React.FC = () => {
   const router = useRouter();
@@ -131,6 +132,14 @@ const Measuring: React.FC = () => {
           max={100}
         ></progress>
       </div>
+
+      <Image
+            src="/image0.png"
+            width={500}
+            height={600}
+            alt="リンゴの木"
+            className="img"
+            />
     </div>
   );
 };

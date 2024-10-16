@@ -1,17 +1,24 @@
-import DaySelect from "@/components/DaySelect";
-import React, {useState} from "react";
+import { getAllTimers } from "@/utils/supabaseFunction";
+import React, { useEffect, useState } from "react";
+import { ThemeProvider } from "react-bootstrap";
 
 // supabaseを挿入
+const Home: React.FC = () => {
+  // supabaseからタイマーを取得するためのstate
+  const [Timer, setTimer] = useState<any>([]);
 
-const Records: React.FC = () => {
-  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const getTimers = async () => {
+      const Timer = await getAllTimers();
+      setTimer(Timer);
+      console.log(Timer);
+    };
 
-  return (
-    <div>
-      <DaySelect  date={date} setDate={setDate}/>
-      Records
-    </div>
-  )
+    getTimers();
+  }, []); // コンポーネントがマウントされたときに実行
+
+  return <div>Records</div>;
+>>>>>>> main
 };
 
 export default Records;
