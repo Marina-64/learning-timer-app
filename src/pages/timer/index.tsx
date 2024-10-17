@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
+import BtnNav from "@/components/BtnNav";
 import { saveStartTime } from "../../utils/supabaseFunction";
 
 const Home: React.FC = () => {
