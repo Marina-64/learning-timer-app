@@ -18,6 +18,7 @@ const Home: React.FC = () => {
   }, []); // コンポーネントがマウントされたときに実行
 
   return <div>Records</div>;
+>>>>>>> main
 };
 
-export default Home;
+export default Records;

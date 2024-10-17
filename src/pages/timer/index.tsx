@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
+import BtnNav from "@/components/BtnNav";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const Home: React.FC = () => {
   const nextSeconds = breakTime % 60;
 
   return (
-    <div className="text-center">
+    <div className="text-center my-8">
       <input
         type="text"
         placeholder="Enter a title"
@@ -89,6 +90,8 @@ const Home: React.FC = () => {
           />
         </svg>
       </button>
+
+      <BtnNav />
     </div>
   );
 };

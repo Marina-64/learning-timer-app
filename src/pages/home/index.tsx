@@ -10,20 +10,24 @@ const HomeBody = () => {
 
   return (
     <div>
-      <div className="text-center justify-center mt-12">
-        <h2 className="heading-4">
-          {year}/{month}/{date}
-        </h2>
-        <h1 className="heading-1 m-6">Total Time ●●：●●</h1>
-        <Image
-          src="/appleTree.jpg"
-          alt="appleTree.jpg"
-          width={360}
-          height={520}
-          className="inline-block"
-        />
+      <div className="custom-container">
+        <div className="text-center justify-center mt-8 text-box">
+          <h2 className="text-xl">{year}/{month}/{date}</h2>
+          <div className="flex text-center justify-center items-center p-6">
+            <h2 className="text-xl">total</h2>
+            <h1 className="font-semibold text-4xl text-center pl-4">01:30:00</h1>
+          </div>
+        </div>
+          <Image
+            src="/image0.png"
+            width={500}
+            height={800}
+            objectFit={"cover"}
+            alt="リンゴの木"
+            className="img mb-16"
+            />
       </div>
-      <BtnNav />
+      <BtnNav/>
     </div>
   );
 };

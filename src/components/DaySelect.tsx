@@ -14,17 +14,17 @@ const DaySelect = (props: DaySelectProps) => {
 
     const handleChangeDate = (pager: string) => {
         if(pager === 'prev') {
-            props.setDate(new Date(thisYear, thisMonth - 1));
+            props.setDate(new Date(thisYear, thisMonth, thisDate - 1));
         } else if(pager === 'next') {
-            props.setDate(new Date(thisYear, thisMonth + 1));
+            props.setDate(new Date(thisYear, thisMonth, thisDate + 1));
         }
     }
 
     return(
-        <div>
-        <ChevronLeftIcon onClick={() => handleChangeDate('prev')}/>
+        <div className="flex items-center gap-2 mt-8">
+        <ChevronLeftIcon className="h-5 w-5" onClick={() => handleChangeDate('prev')}/>
         <h2 className="text-2xl">{thisYear}/{thisMonth}/{thisDate}</h2>
-        <ChevronRightIcon onClick={() => handleChangeDate('prev')}/>
+        <ChevronRightIcon className="h-5 w-5" onClick={() => handleChangeDate('prev')}/>
         </div>
     )
 }
