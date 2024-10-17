@@ -41,7 +41,7 @@ const Home: React.FC = () => {
   const nextSeconds = breakTime % 60;
 
   return (
-    <div className="text-center">
+    <div className="text-center my-8">
       <input
         type="text"
         placeholder="Enter a title"
@@ -97,6 +97,8 @@ const Home: React.FC = () => {
           />
         </svg>
       </button>
+
+      <BtnNav />
     </div>
   );
 };
