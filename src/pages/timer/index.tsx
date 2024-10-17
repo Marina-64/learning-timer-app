@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
 import { saveStartTime } from "../../utils/supabaseFunction";
 
+
 const Home: React.FC = () => {
   const router = useRouter();
   const [title, setTitle] = useState(""); // タイトルの初期値は空
@@ -40,7 +41,7 @@ const Home: React.FC = () => {
   const nextSeconds = breakTime % 60;
 
   return (
-    <div className="text-center">
+    <div className="text-center my-8">
       <input
         type="text"
         placeholder="Enter a title"
@@ -96,6 +97,8 @@ const Home: React.FC = () => {
           />
         </svg>
       </button>
+
+      <BtnNav />
     </div>
   );
 };

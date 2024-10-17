@@ -65,10 +65,10 @@ const Records: React.FC = () => {
           className="inline-block"
         />
       </div>
-
       <BtnNav />
     </div>
   );
+
 };
 
 export default Records;

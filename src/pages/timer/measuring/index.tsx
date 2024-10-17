@@ -4,6 +4,7 @@ import useTimer from "@/hooks/useTimer";
 import { saveStartTime } from "../../../utils/supabaseFunction";
 import { supabase } from "../../../utils/supabase"; // Supabaseインスタンスのインポート
 
+
 const Measuring: React.FC = () => {
   const router = useRouter();
   const initialWorkTime: number = 25 * 60; // 25分
@@ -177,6 +178,14 @@ const Measuring: React.FC = () => {
           max={100}
         ></progress>
       </div>
+
+      <Image
+            src="/image0.png"
+            width={500}
+            height={600}
+            alt="リンゴの木"
+            className="img"
+            />
     </div>
   );
 };
