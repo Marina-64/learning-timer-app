@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
-import Image from "next/image";
+import { saveStartTime } from "../../../utils/supabaseFunction";
+import { supabase } from "../../../utils/supabase"; // Supabaseインスタンスのインポート
+
 
 const Measuring: React.FC = () => {
   const router = useRouter();
@@ -18,8 +20,52 @@ const Measuring: React.FC = () => {
     handleResume();
   }, []);
 
-  const handleStop = () => {
-    router.push("/records");
+  const handleStop = async () => {
+    const endTime = new Date(); // 終了時間
+
+    try {
+      const email = "example@email.com"; // 仮のメールアドレス
+
+      // 最新の開始時間を取得
+      const { data: latestSession, error } = await supabase
+        .from("timer")
+        .select("id, start_time")
+        .eq("email", email)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .single(); // 'single'で1件取得
+
+      if (error || !latestSession) {
+        console.error("開始時間を取得できませんでした:", error);
+        return;
+      }
+
+      const { id, start_time } = latestSession;
+
+      // 勉強時間の計算（秒単位）
+      const studyDurationInSeconds = Math.floor(
+        (endTime.getTime() - new Date(start_time).getTime()) / 1000
+      );
+
+      // Supabaseに終了時間と勉強時間を保存
+      const { error: updateError } = await supabase
+        .from("timer")
+        .update({
+          end_time: endTime.toISOString(),
+          study_duration: studyDurationInSeconds,
+        })
+        .eq("id", id);
+
+      if (updateError) {
+        console.error("終了時間と勉強時間の保存に失敗しました:", updateError);
+        return;
+      }
+
+      console.log(`勉強時間: ${studyDurationInSeconds}秒`);
+      router.push("/records");
+    } catch (error) {
+      console.error("終了処理に失敗しました:", error);
+    }
   };
 
   // タイマー表示に使用する分と秒の計算

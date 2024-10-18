@@ -2,30 +2,41 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useTimer from "@/hooks/useTimer";
 import BtnNav from "@/components/BtnNav";
+import { saveStartTime } from "../../utils/supabaseFunction";
 
 const Home: React.FC = () => {
   const router = useRouter();
-  const [title, setTitle] = useState(""); //タイトルの初期値は空
+  const [title, setTitle] = useState(""); // タイトルの初期値は空
   const initialWorkTime: number = 25 * 60; // 25分
   const breakTime: number = 5 * 60; // 5分
   const { time, setTime } = useTimer(initialWorkTime, breakTime); // 2つの引数を渡す
-
-  const handleStart = () => {
-    router.push("/timer/measuring");
-  };
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
 
-  // 時間が変更されたときに呼び出される関数
+  const handleStart = async () => {
+    const startTime = new Date().toISOString(); // 現在のタイムスタンプ取得
+
+    try {
+      const email = "example@email.com"; // ログインユーザーのメールを取得
+
+      // Supabase に開始データを保存
+      await saveStartTime(email, title, startTime); // 修正: titleをstudy_titleに
+
+      console.log("タイマーが開始されました:", startTime);
+      router.push("/timer/measuring");
+    } catch (error) {
+      console.error("開始時刻の保存に失敗しました:", error);
+    }
+  };
+
   const handleTimeChange = (newTime: number) => {
     setTime(newTime);
   };
 
-  // 時間表示やフォーム部分を直接記述
   const minutes = Math.floor(time / 60);
-  const seconds = 0;
+  const seconds = time % 60;
   const nextMinutes = Math.floor(breakTime / 60);
   const nextSeconds = breakTime % 60;
 
@@ -44,7 +55,6 @@ const Home: React.FC = () => {
         </h2>
         <div className="flex justify-center items-center gap-1 mt-3">
           <div>
-            {/* 次の計測時間表示SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -61,15 +71,12 @@ const Home: React.FC = () => {
             </svg>
           </div>
           <p className="text-center">
-            {/* 次の計測時間表示 */}
             {nextMinutes}:{nextSeconds.toString().padStart(2, "0")}
           </p>
         </div>
       </div>
 
-      {/* スタート */}
       <button className="mt-4" onClick={handleStart}>
-        {/* スタートボタンに表示するSVG */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
